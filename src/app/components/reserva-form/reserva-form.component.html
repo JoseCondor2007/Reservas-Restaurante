@@ -1,0 +1,130 @@
+<section class="form-card">
+  <h2>{{ reservaEditar ? 'Editar reserva' : 'Nueva reserva' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="enviar()" novalidate>
+
+    <div class="grid">
+      <!-- Nombres -->
+      <div class="field">
+        <label for="nombres">Nombres *</label>
+        <input id="nombres" type="text" formControlName="nombres" placeholder="Ej. Ana"
+               [class.invalido]="campoInvalido('nombres')" [class.valido]="campoValido('nombres')" />
+        <small class="error" *ngIf="campoInvalido('nombres')">
+          <span *ngIf="form.get('nombres')?.errors?.['required']">Los nombres son obligatorios.</span>
+          <span *ngIf="form.get('nombres')?.errors?.['minlength']">Mínimo 2 caracteres.</span>
+          <span *ngIf="form.get('nombres')?.errors?.['maxlength']">Máximo 40 caracteres.</span>
+          <span *ngIf="form.get('nombres')?.errors?.['soloLetras']">Solo se permiten letras y espacios.</span>
+        </small>
+      </div>
+
+      <!-- Apellidos -->
+      <div class="field">
+        <label for="apellidos">Apellidos *</label>
+        <input id="apellidos" type="text" formControlName="apellidos" placeholder="Ej. García"
+               [class.invalido]="campoInvalido('apellidos')" [class.valido]="campoValido('apellidos')" />
+        <small class="error" *ngIf="campoInvalido('apellidos')">
+          <span *ngIf="form.get('apellidos')?.errors?.['required']">Los apellidos son obligatorios.</span>
+          <span *ngIf="form.get('apellidos')?.errors?.['minlength']">Mínimo 2 caracteres.</span>
+          <span *ngIf="form.get('apellidos')?.errors?.['maxlength']">Máximo 40 caracteres.</span>
+          <span *ngIf="form.get('apellidos')?.errors?.['soloLetras']">Solo se permiten letras y espacios.</span>
+        </small>
+      </div>
+
+      <!-- Correo -->
+      <div class="field">
+        <label for="correo">Correo electrónico *</label>
+        <input id="correo" type="email" formControlName="correo" placeholder="Ej. ana@correo.com"
+               [class.invalido]="campoInvalido('correo')" [class.valido]="campoValido('correo')" />
+        <small class="error" *ngIf="campoInvalido('correo')">
+          <span *ngIf="form.get('correo')?.errors?.['required']">El correo es obligatorio.</span>
+          <span *ngIf="form.get('correo')?.errors?.['email']">Ingresa un correo válido.</span>
+        </small>
+      </div>
+
+      <!-- Celular -->
+      <div class="field">
+        <label for="celular">Celular *</label>
+        <input id="celular" type="tel" formControlName="celular" placeholder="Ej. 987654321"
+               [class.invalido]="campoInvalido('celular')" [class.valido]="campoValido('celular')" />
+        <small class="error" *ngIf="campoInvalido('celular')">
+          <span *ngIf="form.get('celular')?.errors?.['required']">El celular es obligatorio.</span>
+          <span *ngIf="form.get('celular')?.errors?.['celularInvalido']">Debe tener exactamente 9 dígitos numéricos.</span>
+        </small>
+      </div>
+
+      <!-- Acompañantes -->
+      <div class="field">
+        <label for="acompanantes">Nº de acompañantes *</label>
+        <input id="acompanantes" type="number" min="1" max="20" formControlName="acompanantes"
+               [class.invalido]="campoInvalido('acompanantes')" [class.valido]="campoValido('acompanantes')" />
+        <small class="error" *ngIf="campoInvalido('acompanantes')">
+          <span *ngIf="form.get('acompanantes')?.errors?.['required']">Indica cuántos acompañantes vienen.</span>
+          <span *ngIf="form.get('acompanantes')?.errors?.['minimoAcompanantes']">Debe ser al menos 1.</span>
+          <span *ngIf="form.get('acompanantes')?.errors?.['maximoAcompanantes']">Máximo 20 acompañantes.</span>
+          <span *ngIf="form.get('acompanantes')?.errors?.['noEsNumero']">Debe ser un número.</span>
+        </small>
+      </div>
+
+      <!-- Mesa -->
+      <div class="field">
+        <label for="mesa">Mesa *</label>
+        <select id="mesa" formControlName="mesa"
+                [class.invalido]="campoInvalido('mesa')" [class.valido]="campoValido('mesa')">
+          <option value="" disabled>Selecciona una mesa</option>
+          <option *ngFor="let m of mesas" [value]="m">Mesa {{ m }}</option>
+        </select>
+        <small class="error" *ngIf="campoInvalido('mesa')">
+          <span *ngIf="form.get('mesa')?.errors?.['required']">Debes elegir una mesa.</span>
+          <span *ngIf="form.get('mesa')?.errors?.['mesaInvalida']">Mesa no válida.</span>
+        </small>
+      </div>
+
+      <!-- Fecha -->
+      <div class="field">
+        <label for="fecha">Fecha *</label>
+        <input id="fecha" type="date" formControlName="fecha"
+               [class.invalido]="campoInvalido('fecha')" [class.valido]="campoValido('fecha')" />
+        <small class="error" *ngIf="campoInvalido('fecha')">
+          <span *ngIf="form.get('fecha')?.errors?.['required']">La fecha es obligatoria.</span>
+          <span *ngIf="form.get('fecha')?.errors?.['fechaPasada']">La fecha no puede ser anterior a hoy.</span>
+        </small>
+      </div>
+
+      <!-- Servicio -->
+      <div class="field">
+        <label for="servicio">Servicio *</label>
+        <select id="servicio" formControlName="servicio"
+                [class.invalido]="campoInvalido('servicio')" [class.valido]="campoValido('servicio')">
+          <option value="" disabled>Selecciona servicio</option>
+          <option *ngFor="let s of servicios" [value]="s">{{ s }}</option>
+        </select>
+        <small class="error" *ngIf="campoInvalido('servicio')">
+          <span *ngIf="form.get('servicio')?.errors?.['required']">Elige Almuerzo o Cena.</span>
+          <span *ngIf="form.get('servicio')?.errors?.['servicioInvalido']">Servicio no válido.</span>
+        </small>
+      </div>
+
+      <!-- Descripción -->
+      <div class="field full">
+        <label for="descripcion">Descripción (alergias, preferencias…)</label>
+        <textarea id="descripcion" rows="3" formControlName="descripcion" maxlength="200"
+                  placeholder="Ej. Alergia a frutos secos, mesa junto a ventana…"
+                  [class.invalido]="campoInvalido('descripcion')" [class.valido]="campoValido('descripcion')"></textarea>
+        <small class="contador">{{ form.get('descripcion')?.value?.length || 0 }} / 200</small>
+        <small class="error" *ngIf="campoInvalido('descripcion')">
+          <span *ngIf="form.get('descripcion')?.errors?.['maxlength']">Máximo 200 caracteres.</span>
+          <span *ngIf="form.get('descripcion')?.errors?.['descripcionLarga']">Descripción demasiado larga.</span>
+        </small>
+      </div>
+    </div>
+
+    <div class="acciones">
+      <button type="submit" class="btn-primario" [disabled]="form.invalid">
+        {{ reservaEditar ? 'Guardar cambios' : 'Crear reserva' }}
+      </button>
+      <button type="button" class="btn-secundario" (click)="onCancelar()" *ngIf="reservaEditar">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</section>

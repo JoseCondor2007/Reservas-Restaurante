@@ -1,0 +1,49 @@
+<section class="list-card">
+  <header class="list-header">
+    <h2>Reservas registradas</h2>
+    <div class="contadores">
+      <span class="chip activas">Activas: {{ activas }}</span>
+      <span class="chip eliminadas">Eliminadas: {{ eliminadas }}</span>
+    </div>
+  </header>
+
+  <div class="tabla-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Correo</th>
+          <th>Celular</th>
+          <th>Acompañantes</th>
+          <th>Mesa</th>
+          <th>Fecha</th>
+          <th>Servicio</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of reservas" [class.eliminada]="r.eliminado">
+          <td>{{ r.id }}</td>
+          <td>{{ r.nombres }}</td>
+          <td>{{ r.apellidos }}</td>
+          <td>{{ r.correo }}</td>
+          <td>{{ r.celular }}</td>
+          <td>{{ r.acompanantes }}</td>
+          <td>{{ r.mesa }}</td>
+          <td>{{ r.fecha }}</td>
+          <td>{{ r.servicio }}</td>
+          <td class="acciones">
+            <button class="btn-editar" *ngIf="!r.eliminado" (click)="editar.emit(r)">Editar</button>
+            <button class="btn-eliminar" *ngIf="!r.eliminado" (click)="eliminar.emit(r.id)">Eliminar</button>
+            <button class="btn-restaurar" *ngIf="r.eliminado" (click)="restaurar.emit(r.id)">Restaurar</button>
+          </td>
+        </tr>
+        <tr *ngIf="reservas.length === 0">
+          <td colspan="10" class="vacio">No hay reservas registradas.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

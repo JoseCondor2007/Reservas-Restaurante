@@ -1,0 +1,29 @@
+.contenido {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 2rem 1.2rem 3rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 2.5rem 1rem 2rem;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+  color: #C9A227;
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.tagline {
+  color: #F5F0E8;
+  opacity: 0.85;
+  font-size: 1rem;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .hero h1 { font-size: 1.9rem; }
+}

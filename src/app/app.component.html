@@ -1,0 +1,19 @@
+<div class="contenido">
+  <header class="hero">
+    <h1>La Mesa Dorada</h1>
+    <p class="tagline">Cocina de autor · Reserva tu mesa en segundos</p>
+  </header>
+
+  <app-reserva-form
+    [reservaEditar]="reservaEditando"
+    (guardar)="guardarReserva($event)"
+    (cancelar)="cancelarEdicion()">
+  </app-reserva-form>
+
+  <app-reserva-list
+    [reservas]="reservas"
+    (editar)="editarReserva($event)"
+    (eliminar)="eliminarReserva($event)"
+    (restaurar)="restaurarReserva($event)">
+  </app-reserva-list>
+</div>

@@ -1,0 +1,121 @@
+.form-card {
+  background: rgba(26, 26, 26, 0.92);
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.form-card h2 {
+  margin: 0 0 1.5rem 0;
+  color: #C9A227;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+
+.field { display: flex; flex-direction: column; }
+.field.full { grid-column: 1 / -1; }
+
+.field label {
+  color: #F5F0E8;
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.03em;
+}
+
+.field input,
+.field select,
+.field textarea {
+  background: #2a2a2a;
+  border: 1px solid #444;
+  color: #F5F0E8;
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: #C9A227;
+  box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.25);
+}
+
+.field input.valido,
+.field select.valido,
+.field textarea.valido {
+  border-color: #4caf50;
+}
+
+.field input.invalido,
+.field select.invalido,
+.field textarea.invalido {
+  border-color: #e74c3c;
+}
+
+.field textarea { resize: vertical; min-height: 80px; }
+
+.error {
+  color: #ff7b6b;
+  font-size: 0.78rem;
+  margin-top: 0.3rem;
+  min-height: 1em;
+}
+
+.contador {
+  color: #888;
+  font-size: 0.75rem;
+  text-align: right;
+  margin-top: 0.2rem;
+}
+
+.acciones {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.8rem;
+  justify-content: flex-end;
+}
+
+.btn-primario {
+  background: #C9A227;
+  color: #1A1A1A;
+  border: none;
+  padding: 0.75rem 1.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-primario:hover:not(:disabled) { background: #b08d1f; transform: translateY(-1px); }
+.btn-primario:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-secundario {
+  background: transparent;
+  color: #F5F0E8;
+  border: 1px solid #555;
+  padding: 0.75rem 1.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-secundario:hover { border-color: #C9A227; color: #C9A227; }
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+  .form-card { padding: 1.2rem; }
+  .acciones { flex-direction: column; }
+  .btn-primario, .btn-secundario { width: 100%; }
+}

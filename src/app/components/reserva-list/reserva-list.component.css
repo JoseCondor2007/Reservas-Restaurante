@@ -1,0 +1,92 @@
+.list-card {
+  background: rgba(26, 26, 26, 0.92);
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.list-header h2 {
+  margin: 0;
+  color: #C9A227;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+}
+
+.contadores { display: flex; gap: 0.5rem; }
+
+.chip {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.chip.activas { background: rgba(76, 175, 80, 0.15); color: #8be08f; border: 1px solid rgba(76, 175, 80, 0.5); }
+.chip.eliminadas { background: rgba(231, 76, 60, 0.15); color: #ff9d92; border: 1px solid rgba(231, 76, 60, 0.5); }
+
+.tabla-wrapper { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+th, td {
+  padding: 0.65rem 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid #333;
+  white-space: nowrap;
+}
+
+th {
+  color: #C9A227;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  border-bottom: 2px solid #444;
+}
+
+td.desc {
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #c9c9c9;
+}
+
+tbody tr:hover { background: rgba(201, 162, 39, 0.06); }
+
+tr.eliminada td {
+  opacity: 0.45;
+  text-decoration: line-through;
+}
+
+.acciones { display: flex; gap: 0.4rem; }
+
+.acciones button {
+  border: none;
+  padding: 0.35rem 0.7rem;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+.acciones button:hover { transform: translateY(-1px); }
+
+.btn-editar { background: #C9A227; color: #1A1A1A; }
+.btn-eliminar { background: #c0392b; color: #fff; }
+.btn-restaurar { background: #4caf50; color: #fff; }
+
+.vacio { text-align: center; padding: 1.5rem; color: #888; }

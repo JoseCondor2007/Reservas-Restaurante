@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <g fill="none" stroke="#C9A227" stroke-width="2" opacity="0.18">
+    <!-- Plato -->
+    <circle cx="50" cy="50" r="28"/>
+    <circle cx="50" cy="50" r="16"/>
+    <!-- Tenedor -->
+    <path d="M110 30 v18 M116 30 v18 M122 30 v18 M116 48 v22" stroke-linecap="round"/>
+    <!-- Cuchillo -->
+    <path d="M135 30 v40" stroke-linecap="round"/>
+    <!-- Copa -->
+    <path d="M35 115 q15 20 30 0 M50 115 v20 M42 138 h16" stroke-linecap="round"/>
+    <!-- Cuchara pequeña -->
+    <ellipse cx="110" cy="120" rx="8" ry="11"/>
+    <path d="M110 131 v14" stroke-linecap="round"/>
+  </g>
+</svg>
